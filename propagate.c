@@ -139,4 +139,6 @@ int main(void){
          VirtualFree(psh,sizeof(sh),MEM_RELEASE);
       } else xstrerror(L"VirtualAlloc(SUBCLASS_HEADER)");
     } else xstrerror(L"ReadProcessMemory(SUBCLASS_HEADER)");
+    CloseHandle(hProcess);
+    return 0;
 }
