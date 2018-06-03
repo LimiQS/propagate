@@ -112,7 +112,7 @@ LRESULT CALLBACK SubclassProc(HWND hWnd, UINT uMsg, WPARAM wParam,
     // we only expect to receive this message
     // so just ignore anything else
     if (uMsg != WM_CLOSE) return 0;
-    
+
   #if defined(_WIN64)
     peb = (PPEB) __readgsqword(0x60);
   #else
@@ -161,10 +161,10 @@ LRESULT CALLBACK SubclassProc(HWND hWnd, UINT uMsg, WPARAM wParam,
            pCloseHandle         != NULL)
         {  
           // open event handle
-          hEvent=pOpenEvent(EVENT_MODIFY_STATE, FALSE, (PCHAR)szpropagate);
+          hEvent=pOpenEvent(EVENT_MODIFY_STATE, TRUE, (PCHAR)szpropagate);
           if(hEvent!=NULL){
             // display kewl message to user :P
-            pMessageBox(pGetForegroundWindow(), (PCHAR)msg, (PCHAR)title, MB_OK);
+            pMessageBox(NULL, (PCHAR)msg, (PCHAR)title, MB_OK);
             // signal state
             pSetEvent(hEvent);
             // close
