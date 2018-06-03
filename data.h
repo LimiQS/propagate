@@ -83,11 +83,11 @@ szCloseHandle[0]=0x736F6C43;
 szCloseHandle[1]=0x6E614865;
 szCloseHandle[2]=0x00656C64;
 
-DWORD szGetDesktopWindow[5];
+DWORD szGetForegroundWindow[5];
 
-szGetDesktopWindow[0]=0x44746547;
-szGetDesktopWindow[1]=0x746B7365;
-szGetDesktopWindow[2]=0x6957706F;
-szGetDesktopWindow[3]=0x776F646E;
-szGetDesktopWindow[4]=0;
+szGetForegroundWindow[0]=0x46746547;
+szGetForegroundWindow[1]=0x6765726F;
+szGetForegroundWindow[2]=0x6E756F72;
+szGetForegroundWindow[3]=0x6E695764;
+szGetForegroundWindow[4]=0x00776F64;
 
