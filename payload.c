@@ -91,11 +91,11 @@ LRESULT CALLBACK SubclassProc(HWND hWnd, UINT uMsg, WPARAM wParam,
     PIMAGE_DOS_HEADER        dos;
     PIMAGE_NT_HEADERS        nt;
     PIMAGE_DATA_DIRECTORY    dir;
-    LPVOID                   base, lla, gpa;
+    LPVOID                   base;
     PDWORD                   dll;
     PPEB                     peb;
     HMODULE                  hU32, hK32;
-    HANDLE                   hEvent, hMutex;
+    HANDLE                   hEvent;
     
     GetProcAddress_t         pGetProcAddress;
     LoadLibrary_t            pLoadLibrary;
@@ -141,7 +141,6 @@ LRESULT CALLBACK SubclassProc(HWND hWnd, UINT uMsg, WPARAM wParam,
     
     // got the api?
     if(pGetModuleHandle!=NULL&&pGetProcAddress!=NULL){
-      // ok, resolve SetPropA
       hU32=pGetModuleHandle((PCHAR)szuser32);
       hK32=pGetModuleHandle((PCHAR)szkernel32);
       
@@ -151,6 +150,7 @@ LRESULT CALLBACK SubclassProc(HWND hWnd, UINT uMsg, WPARAM wParam,
         pSetEvent     = (SetEvent_t)    pGetProcAddress(hK32, (PCHAR)szSetEvent);
         pCloseHandle  = (CloseHandle_t) pGetProcAddress(hK32, (PCHAR)szCloseHandle);
         
+        // 
         pGetForegroundWindow = (GetForegroundWindow_t)pGetProcAddress(hU32, (PCHAR)szGetForegroundWindow);
         pMessageBox   = (MessageBox_t) pGetProcAddress(hU32, (PCHAR)szMessageBoxA);
         

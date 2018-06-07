@@ -27,12 +27,6 @@ DWORD szuser32[2];
 szuser32[0]=0x72657375;
 szuser32[1]=0x00003233;
 
-DWORD szSetPropA[3];
-
-szSetPropA[0]=0x50746553;
-szSetPropA[1]=0x41706F72;
-szSetPropA[2]=0;
-
 DWORD szUxSubclassInfo[4];
 
 szUxSubclassInfo[0]=0x75537855;
