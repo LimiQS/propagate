@@ -13,6 +13,8 @@ http://www.hexacorn.com/blog/2018/02/04/propagate-follow-up-2-some-more-shatteri
 https://medium.com/@0x6b64/background-abdddfdd59d2
 
 All the payload does is display a message box with  "Hello, World!".
+Only tested on a 32-bit version of Windows 7.
+
 I was more curious to know how it worked than anything else.
 
 
