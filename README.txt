@@ -18,3 +18,4 @@ Only tested on a 32-bit version of Windows 7.
 I was more curious to know how it worked than anything else.
 
 
++0xf1c ReservedForNtRpc : Ptr32 Void

