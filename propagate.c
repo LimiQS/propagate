@@ -61,8 +61,8 @@ int main(void){
     SUBCLASS_HEADER sh;
     LPVOID          psh, pfnSubclass;
     LPVOID          payload=NULL;
-    DWORD           payloadSize=0;
-    DWORD           read,written,evt;
+    DWORD           evt,payloadSize=0;
+    SIZE_T          read,written;
     BOOL            bRead, bResult;
     HANDLE          hEvent;
     
@@ -131,10 +131,10 @@ int main(void){
             CloseHandle(hEvent);
           } else xstrerror(L"CreateEvent");
           // free payload memory if required
-           VirtualFree(pfnSubclass,PAYLOAD_SIZE,MEM_RELEASE);
+           VirtualFreeEx(hProcess, pfnSubclass,PAYLOAD_SIZE,MEM_RELEASE);
         } else xstrerror(L"VirtualAlloc(payloadSize)");
         // free subclass header if required
-         VirtualFree(psh,sizeof(sh),MEM_RELEASE);
+         VirtualFreeEx(hProcess, psh,sizeof(sh),MEM_RELEASE);
       } else xstrerror(L"VirtualAlloc(SUBCLASS_HEADER)");
     } else xstrerror(L"ReadProcessMemory(SUBCLASS_HEADER)");
     CloseHandle(hProcess);
